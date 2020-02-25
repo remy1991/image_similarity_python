@@ -12,7 +12,7 @@ def image_similiarity_score(image_a, image_b):
     return (hash1-hash2)
 
 if __name__ == "__main__":
-    # check_for_updates()
+    check_for_updates()
     parser = argparse.ArgumentParser()
     parser.add_argument('--input-csv', required=True, dest='input_csv')
     parser.add_argument('--output-csv', dest='output_csv')
