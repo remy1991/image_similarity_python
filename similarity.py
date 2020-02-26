@@ -1,12 +1,14 @@
 from PIL import Image
 import csv, time, git, sys, argparse, imagehash
 
+
 def check_for_updates():
     repo = git.Repo(search_parent_directories=True)
     repo.remotes.origin.fetch()
     if len(list(repo.iter_commits('master..master@{u}'))) > 0:
         return 'There is a new update. Please perform "git pull" first'
 
+# Image similarity function to calculate score
 def image_similiarity_score(image_a, image_b):
     hash1 = imagehash.average_hash(Image.open(image_a))
     hash2 = imagehash.average_hash(Image.open(image_b))
