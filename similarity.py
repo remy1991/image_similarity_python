@@ -1,15 +1,5 @@
 from PIL import Image
-import csv, time, git, sys, argparse, imagehash
-
-
-def check_for_updates():
-    repo = git.Repo(search_parent_directories=True)
-    repo.remotes.origin.fetch()
-    latest_tag = ""
-    for tag in repo.tags:
-        latest_tag = tag
-    if str(latest_tag) != repo.git.describe():
-        return 'There is a new update. Please perform "git pull" first. In case of docker, please do "docker pull image_similarity:{0}"'.format(str(latest_tag))
+import csv, time, sys, argparse, imagehash
 
 # Image similarity function to calculate score
 def image_similiarity_score(image_a, image_b):
@@ -18,11 +8,9 @@ def image_similiarity_score(image_a, image_b):
     return abs(hash1-hash2)
 
 def main():
-    if check_for_updates():
-        print(check_for_updates())
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input-csv', required=True, dest='input_csv')
-    parser.add_argument('--output-csv', dest='output_csv')
+    parser.add_argument('--input-csv', required=True, dest='input_csv', help='Absolute path for input csv file')
+    parser.add_argument('--output-csv', dest='output_csv', help='Absolute path for output csv file')
     args = parser.parse_args()
     if args.output_csv:
         output_file = open(args.output_csv, mode='w')
@@ -46,10 +34,10 @@ def main():
                         csv_writer.writerow([row[0],row[1],similarity/100,elapsed_time])
                     output_file.write('{0},{1},{2},{3}\n'.format(row[0],row[1],similarity/100,elapsed_time))
                     # line_count += 1
-                except FileNotFoundError:
+                except (FileNotFoundError, IOError):
                     if args.output_csv:
-                        csv_writer.writerow([row[0],row[1]])
-                    output_file.write('{0},{1}\n'.format(row[0],row[1]))
+                        csv_writer.writerow([row[0],row[1]],None,None)
+                    output_file.write('{0},{1},{2},{3}\n'.format(row[0],row[1],None,None))
 
 if __name__ == "__main__":
     main()
