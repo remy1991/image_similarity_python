@@ -3,11 +3,11 @@
 <!-- vim-markdown-toc GFM -->
 
 * [Introduction](#introduction)
-* [How does the application work?](#how-does-the-application-work?)
-* [How to use?](#how-to-use-the-application?)
-* [How to make sure the code works?](#how-to-make-sure-the-code-works?)
-* [How to check for updates?](#how-to-check-for-updates?)
-* [How to push updates (For maintainers)?](#how-to-push-updates?)
+* [How does the application work](#how-does-the-application-work)
+* [How to use](#how-to-use-the-application)
+* [How to make sure the code works](#how-to-make-sure-the-code-works)
+* [How to check for updates](#how-to-check-for-updates)
+* [How to push updates (For maintainers)](#how-to-push-updates)
 
 <!-- vim-markdown-toc -->
 
