@@ -1,6 +1,6 @@
 from PIL import Image
 from check_for_updates import check_for_updates
-import csv, time, sys, argparse, imagehash
+import csv, time, sys, argparse, logging, traceback, imagehash
 
 # Image similarity function to calculate score
 def image_similiarity_score(image_a, image_b):
@@ -14,6 +14,7 @@ def main():
     parser.add_argument('--input-csv', required=True, dest='input_csv', help='Absolute path for input csv file')
     parser.add_argument('--output-csv', dest='output_csv', help='Absolute path for output csv file')
     args = parser.parse_args()
+    logging.basicConfig(filename='similarity.log',level=logging.INFO)
     if args.output_csv:
         output_file = open(args.output_csv, mode='w')
     else:
@@ -28,11 +29,13 @@ def main():
                 line_count += 1
             else:
                 try:
+                    logging.info('Checking similarity between {0} and {1}'.format(row[0],row[1]))
                     start_time = time.time()
                     similarity = image_similiarity_score(row[0],row[1])
                     elapsed_time = time.time() - start_time
                     csv_writer.writerow([row[0],row[1],similarity/100,elapsed_time])
                 except (FileNotFoundError, IOError):
+                    logging.error(traceback.format_exc())
                     csv_writer.writerow([row[0],row[1],None,None])
 
 if __name__ == "__main__":

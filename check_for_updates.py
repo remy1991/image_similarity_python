@@ -19,6 +19,8 @@ def check_for_updates():
             return 'There is a new update. Please perform "git pull" first. In case of docker, please do "docker pull image_similarity:{0}"'.format(str(latest_tag))
         else:
             return 'Everything is up to date'
+    else:
+        return 'Already checked for update in last {0} hours'.format(check_update_threshold)
 
 if __name__ == '__main__':
     print(check_for_updates())
