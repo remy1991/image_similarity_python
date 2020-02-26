@@ -5,8 +5,11 @@ import csv, time, git, sys, argparse, imagehash
 def check_for_updates():
     repo = git.Repo(search_parent_directories=True)
     repo.remotes.origin.fetch()
-    if len(list(repo.iter_commits('master..master@{u}'))) > 0:
-        return 'There is a new update. Please perform "git pull" first'
+    latest_tag = ""
+    for tag in repo.tags:
+        latest_tag = tag
+    if str(latest_tag) != repo.git.describe():
+        return 'There is a new update. Please perform "git pull" first. In case of docker, please do "docker pull image_similarity:{0}"'.format(str(latest_tag))
 
 # Image similarity function to calculate score
 def image_similiarity_score(image_a, image_b):
