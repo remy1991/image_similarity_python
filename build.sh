@@ -1,5 +1,6 @@
 #!/bin/bash
 
-tag="$1"
-docker build -t remy1991/image_similarity_app:$tag
-docker push remy1991/image_similarity_app:$tag
+tag=$1
+namespace="remy1991"
+docker build -t $namespace/image_similarity_app:$tag .
+docker push $namespace/image_similarity_app:$tag
