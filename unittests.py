@@ -12,11 +12,21 @@ class TestSum(unittest.TestCase):
         image2 = '/Users/ravi.he/Downloads/red-dahlia-flower-60597.png'
         self.assertEqual(image_similiarity_score(image1, image2), 0)
 
+
+    def test_similarity_score2(self):
+        """
+        Test similarity score
+        """
+        image1 = '/Users/ravi.he/Downloads/red-dahlia-flower-60597.jpg'
+        image2 = '/Users/ravi.he/Downloads/summer-flowers-909.jpg'
+        self.assertEqual(image_similiarity_score(image1, image2)/100, 0.25)
+
+
     def test_not_correct_image_file_exception(self):
         image1 = '/Users/ravi.he/Downloads/atlassian_interview.txt'
         image2 = '/Users/ravi.he/Downloads/red-dahlia-flower-60597.png'
-        # self.assertRaises(image_similiarity_score(image1, image2), FileNotFoundError)
         with self.assertRaises(IOError): image_similiarity_score(image1, image2)
+
 
     def test_file_not_found_exception(self):
         image1 = '/Users/ravi.he/Downloads/atlassian_interview.tx'
