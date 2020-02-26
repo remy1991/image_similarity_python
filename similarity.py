@@ -3,6 +3,7 @@ import csv, time, sys, git, argparse, imagehash
 
 def check_for_updates():
     repo = git.Repo(search_parent_directories=True)
+    repo.remotes.origin.fetch()
     if len(list(repo.iter_commits('master..master@{u}'))) > 0:
         return 'There is a new update. Please perform "git pull" first'
 
