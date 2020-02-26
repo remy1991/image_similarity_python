@@ -3,7 +3,7 @@ import csv, time, sys, git, argparse, imagehash
 
 def check_for_updates():
     repo = git.Repo(search_parent_directories=True)
-    if repo.head.ref.object.hexsha != repo.head.object.hexsha:
+    if len(list(repo.iter_commits('master..master@{u}'))) > 0:
         return 'There is a new update. Please perform "git pull" first'
 
 def image_similiarity_score(image_a, image_b):
