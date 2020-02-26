@@ -1,7 +1,7 @@
 FROM python:3.7-buster
 
-ADD requirements.txt /app
-RUN pip install -r requirements.txt
+COPY requirements.txt /app/requirements.txt
+RUN pip install -r /app/requirements.txt
 
-ADD similarity.py /app
+COPY similarity.py /app/similarity.py
 ENTRYPOINT [ "python", "/app/similarity.py" ]
