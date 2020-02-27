@@ -13,7 +13,7 @@
 
 ## Introduction
 
-This project has been created to help anyone who wants to check similarity between pair of images by giving a similarity score where 0 signifies that the images are same. The main application is written in python3 where the python script takes a csv file as input and outputs in a csv format into a file if given else spills it out on stdout. The design decisions, why a particular approach was chosen and steps taken to implement the application have been described in details in the following sections where each section describes way to use, maintain and effectively distribute the application making it more intuitive to use. 
+This project has been created to help anyone who wants to check similarity between pair of images where the application returns similarity score where 0 signifies that the images are same. The main application is written in python3 where the python script takes a csv file as input and writes the output in a csv file if specified else prints it out on stdout. The design decisions, reason for choosing a particular approach and steps taken to implement the application have been described in detail in the following sections where each section describes the method to use, maintain and effectively distribute the application making it more intuitive for the user. 
 
 ## How does the application work?
 
@@ -24,10 +24,10 @@ Using the imagehashes of the pair of images, the similarity fuction is returning
 
 ## How to use the application?
 
-The project has been packaged in two way. The decision of chosing either way is based on ease of using, better distribution, being platform agnostic and keeping team collaboration in mind. Following are the two way in which one can chose to use the application
+The project has been packaged in two way. The decision of choosing either way is based on ease of using, better distribution, being platform agnostic and keeping team collaboration in mind. Following are the two way in which one can choose to use the application
 
 ### Git
-Git simplifies the processing of working with teams across the board, reduces collaboration issues across team members. Team members can work independently without creating any kind of hinderance. Following are the steps that need to be executed in order to install all the necessary packages, modules, access the app and run the scripts
+Git simplifies the process of working with teams across the board and reduces collaboration issues across team members. Team members can work independently without creating any kind of hinderance. Following are the steps that need to be executed in order to install all the necessary packages, modules, access the app and run the scripts:
 
 ```
 On Terminal (MacOS)
@@ -59,7 +59,7 @@ PS C:\Users\ravi\image_similarity_python\> python3 similarity.py --input-csv <ab
 **Note that '--input-csv' is mandatory argument whereas '--output-csv' is optional. In case '--output-csv' is missing, output will printed on stdout**
 
 ### Docker
-Docker has been chosen as a packaging medium because of docker being agnostic of platorm. One can package a complete application along with all the dependencies using a docker image and the user just needs to have docker installed and rest can be taken care by running docker commands. Considering how it makes using an application convenient without worrying abaout the dependeny cycles, the application has been packaged as a docker image and following are the steps that needs to be executed in order to access the application. 
+Docker has been chosen as a packaging medium because it is platform agnostic. One can package a complete application along with all the dependencies using a docker image and the user just needs to have docker installed and rest can be taken care by running docker commands. Considering how it makes using an application convenient without worrying abaout the dependency cycles, the application has been packaged as a docker image and following are the steps that needs to be executed in order to access the application: 
 
 ```
 On Terminal (MacOS)
@@ -85,7 +85,7 @@ Since the application is written in python, python unittest module has been used
 
 ## How to check for updates?
 
-There is a provision in the python script (check\_for\_updates.py) which essentially checks if there is any update present by comparing current local git tag and what is the latest tag present at the repository. The code snippet will be executed along with the main script (similarity.py) but the updates will be checked based on specified timeframe and then it will be cached till the next time. For e.g. the updates will be checked every 24 hours as per the threshold in the code. **git tag** has been used as the base for checking for future updates. Though the user does not have to worry about the intimation of the update but in order to use the latest version, manual steps are involved (but can be easily automated with few tweaks)
+There is a provision in the python script (check\_for\_updates.py) which essentially checks if there is any update present by comparing current local git tag and what is the latest tag present at the repository. The code snippet will be executed along with the main script (similarity.py) but the updates will be checked based on specified time frame and then it will be cached till the next time. For e.g. the updates will be checked every 24 hours as per the threshold in the code. **git tag** has been used as the base for checking future updates. Though the user does not have to worry about the intimation of the update but in order to use the latest version, manual steps are involved although it can be easily automated with few tweaks.
 
 Sample output
 
@@ -101,7 +101,7 @@ If there is update present
 
 ## How to push updates?
 
-The application is very simple to understand making it easy for other developers to contribute, purpose and implement changes, optimize it further based on requirements. Supportive scripts have been added to the git repository so that simple continous integration and continous delivery is supported. Following are various ways in which one can actively develop and maintain the application. 
+The application is very simple to understand making it easy for other developers to contribute, propose & implement changes and optimize it further based on requirements. Supportive scripts have been added to the git repository to enable continous integration and continous delivery. Following are various ways in which one can actively develop and maintain the application.  
 
 Since everything is maintained via a git repository, after every change, following steps should be executed from the git cloned directory
 
@@ -117,4 +117,4 @@ $ ./build.sh <tag>
 
 ## Notes
 
-There are various other things that could have been considered while implementing like packaging the application using deb/rpm packages or included more granular control with bash scripts but since there is a requirement to support multiple operating systems, not all implementaions are straighforward and hence the approaches which are platform agnostic are given preference here. 
+There are various other things that could have been considered while implementing the project like packaging the application as deb/rpm packages or include more granular control with bash scripts but since there is a requirement to support multiple operating systems, not all implementaions are straighforward and hence the approaches which are platform agnostic are given preference here. 
