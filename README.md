@@ -112,7 +112,7 @@ $ git tag -a <tag>
 $ git push -u origin master --follow-tags
 $ ./build.sh <tag>
 ```
-**build.sh** will create a docker image (check Dockerfile for more specifics) and push it to docker hub under namespace remy1991. This can be modified as per requirement and the information of the new docker image should be circulated amongst the users. **git tag** command is necessary since the 'check for updates' code is completely dependent on that and in case something is not correct with the tags, users wont be able to get the updated version of the application. Also make good use of **unittests.py** before pushing the changes to make sure everything works as expected. 
+**build.sh** will create a docker image (check Dockerfile for more specifics) and push it to docker hub under namespace remy1991. The argument to **build.sh** is the latest tag which is pushed to git repository. This can be modified as per requirement and the information of the new docker image should be circulated amongst the users. **git tag** command is necessary since the 'check for updates' code is completely dependent on that and in case something is not correct with the tags, users wont be able to get the updated version of the application. Also make good use of **unittests.py** before pushing the changes to make sure everything works as expected. 
 
 
 ## Notes
